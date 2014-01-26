@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <object dataType="Class" type="Duality.Resources.Pixmap">
+    <animCols dataType="Int">0</animCols>
+    <animRows dataType="Int">0</animRows>
+    <atlas />
+    <layers dataType="Class" type="System.Collections.Generic.List`1[[Duality.Resources.Pixmap+Layer]]" id="292984781">
+      <_items dataType="Array" type="Duality.Resources.Pixmap+Layer[]" id="2896774178" length="4">
+        <object dataType="Class" type="Duality.Resources.Pixmap+Layer" id="3086941652" custom="true">
+          <body>
+            <version dataType="Int">3</version>
+            <pixelData dataType="Array" type="System.Byte[]" id="1420745160" length="2841">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</pixelData>
+          </body>
+        </object>
+        <object />
+        <object />
+        <object />
+      </_items>
+      <_size dataType="Int">1</_size>
+      <_version dataType="Int">1</_version>
+    </layers>
+    <sourcePath dataType="String">Source\Media\mario.jpg</sourcePath>
+  </object>
+</root>

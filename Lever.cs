@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 
@@ -9,47 +10,50 @@ using Duality.Resources;
 using OpenTK;
 using OpenTK.Input;
 
-namespace Duality_ {
-	[Serializable]
-	public class Lever : Component, ICmpUpdatable, ICmpInitializable  {
-		
-		public float time = 1.0f;
-		public float lastTime = Time.GameTimer.Seconds;
-		public float currentTime;
-		public void OnUpdate() {
+namespace Space_Station_Escape
+{
+    [Serializable]
+    public class Lever : Component, ICmpUpdatable, ICmpInitializable
+    {
+        public float time = 1.0f;
+        public float lastTime = Time.GameTimer.Seconds;
+        public float currentTime;
+        public void OnUpdate()
+        {
 
-			RigidBody body = this.GameObj.RigidBody;
+            RigidBody body = this.GameObj.RigidBody;
 
-			if (DualityApp.Keyboard[Key.L] && currentTime - lastTime >= 1.0f) {
-				//get a list of all gameobjects with script Block
-				//GameObject[] listOfBlock = Scene.Current.FindGameObjects<Block>().ToArray<GameObject>();
+            //get a list of all gameobjects with script Block
+            //GameObject[] listOfBlock = Scene.Current.FindGameObjects<Block>().ToArray<GameObject>();           
 
-				// 1. Retrieve 
-				ContentRef<Prefab> blockPrefabReference = GameRes.Data.Mario_Block_Prefab;
-				Prefab blockPrefab = blockPrefabReference.Res;
+            if (DualityApp.Keyboard[Key.Q] && currentTime - lastTime >= 1.0f)
+            {                
+                // 3. Configure 
+                blockObject.Transform.Pos = new Vector3(0, 0, -50);
+                //blockObject.Transform.Angle = this.GameObj.Transform.Angle; 
 
-				// 2. Instantiate 
-				GameObject blockObject = blockPrefab.Instantiate();
-				//blockObject.Parent = this.GameObj; 
+                // 4. Add 
+                Scene.Current.AddObject(blockObject);
 
-				// 3. Configure 
-				blockObject.Transform.Pos = new Vector3( 0, 0, -50 ); 
-				//blockObject.Transform.Angle = this.GameObj.Transform.Angle; 
+                lastTime = Time.GameTimer.Seconds;
+            }
+            currentTime = Time.GameTimer.Seconds;
+        }
 
-				// 4. Add 
-				Scene.Current.AddObject(blockObject);
+        public void OnInit(Component.InitContext context)
+        {
+            // 1. Retrieve 
+            ContentRef<Prefab> blockPrefabReference = GameRes.Data.Mario_Block_Prefab;
+            Prefab blockPrefab = blockPrefabReference.Res;
 
-				lastTime = Time.GameTimer.Seconds;
-			}
+            // 2. Instantiate 
+            GameObject blockObject = blockPrefab.Instantiate();
+            //blockObject.Parent = this.GameObj; 
+        }
 
-			currentTime = Time.GameTimer.Seconds;
-		}
-
-		public void OnInit(Component.InitContext context) {
-		}
-
-		public void OnShutdown(Component.ShutdownContext context) {
-			throw new NotImplementedException();
-		}
-	}
+        public void OnShutdown(Component.ShutdownContext context)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

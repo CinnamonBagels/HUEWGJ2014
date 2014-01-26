@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <object dataType="Class" type="Duality.DualityAppData">
+    <appName dataType="String">Space Station Escape</appName>
+    <authorName dataType="String">Natalie</authorName>
+    <customData />
+    <localUserData dataType="Bool">false</localUserData>
+    <multisampleBackBuffer dataType="Bool">true</multisampleBackBuffer>
+    <physicsFixedTime dataType="Bool">false</physicsFixedTime>
+    <physicsVelThreshold dataType="Float">0.8333334</physicsVelThreshold>
+    <soundDopplerFactor dataType="Float">1</soundDopplerFactor>
+    <speedOfSound dataType="Float">360</speedOfSound>
+    <startScene dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Scene]]">
+      <contentPath dataType="String">Data\FirstScene.Scene.res</contentPath>
+    </startScene>
+    <version dataType="UInt">0</version>
+    <websiteUrl dataType="String">http://www.fetzenet.de</websiteUrl>
+  </object>
+</root>

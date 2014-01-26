@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GamePlugin.core</name>
+    </assembly>
+    <members>
+        <member name="T:Space_Station_Escape.Space_Station_EscapeCorePlugin">
+            <summary>
+            Defines a Duality core plugin.
+            </summary>
+        </member>
+        <member name="F:Space_Station_Escape.Player.canJump">
+            <summary>
+            If the player can currently jump or not.
+            </summary>
+        </member>
+    </members>
+</doc>
