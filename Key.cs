@@ -8,7 +8,13 @@ using Duality;
 namespace Duality_ {
 	class Key : Component, ICmpCollisionListener {
 		public void OnCollisionBegin(Component sender, CollisionEventArgs args) {
-			throw new NotImplementedException();
+			Component player = sender.GameObj.GetComponent<Player>();
+			player.hasKey = true;
+			destroyKey();
+		}
+
+		private void destroyKey() {
+			this.GameObj.DisposeLater();
 		}
 
 		public void OnCollisionEnd(Component sender, CollisionEventArgs args) {

@@ -8,11 +8,11 @@ using Duality;
 namespace Duality_ {
 	class KeyDoor : Component, ICmpCollisionListener {
 
-		private bool isLocked = true;
 		public void OnCollisionBegin(Component sender, CollisionEventArgs args) {
-			//if(player.hasKey) {
-				//Door.unlock;
-			//}
+			Component player = sender.GameObj.GetComponent<Player>();
+			if (player.hasKey) {
+				unlock();
+			}
 		}
 
 		public void OnCollisionEnd(Component sender, CollisionEventArgs args) {
@@ -24,8 +24,7 @@ namespace Duality_ {
 		}
 
 		public void unlock() {
-			isLocked = false;
-			//destroy keydoor object
+			this.GameObj.DisposeLater();
 		}
 	}
 }

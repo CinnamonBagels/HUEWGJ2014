@@ -10,7 +10,8 @@ namespace Duality_ {
 		private float healAmount = 30.0f;
 
 		public void OnCollisionBegin(Component sender, CollisionEventArgs args) {
-			//player.heal(healAmount);
+			Component player = sender.GameObj.GetComponent<Player>();
+			player.heal(healAmount);
 		}
 
 		public void OnCollisionEnd(Component sender, CollisionEventArgs args) {
