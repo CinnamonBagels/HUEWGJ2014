@@ -9,7 +9,7 @@ using Duality.Components.Renderers;
 using OpenTK.Input;
 using OpenTK;
 
-namespace Space_Station_Escape
+namespace Duality_
 {
 
     [Serializable]
@@ -54,6 +54,12 @@ namespace Space_Station_Escape
 		/// player health
 		/// </summary>
 		private float health = 100.0f;
+
+		private bool isInvulnerable = false;
+
+		private float lastTime = Time.GameTimer.Seconds;
+
+		private float currentTime;
 
         public void OnUpdate()
         {
@@ -125,19 +131,40 @@ namespace Space_Station_Escape
                 }
                 spriteRenderer.AnimFrameCount = 2;
             }
+
+			if (currentTime - lastTime >= 1.0f) {
+				isInvulnerable = false;
+				lastTime = currentTime;
+			}
+
+			currentTime = Time.GameTimer.Seconds;
         }
 
+		//MEDIC
 		public void heal(float healAmount) {
-			if (health + healAmount > 100) {
-				health = 100;
+			if (this.health + healAmount > 100) {
+				this.health = 100;
 			} else {
-				health += healAmount;
+				this.health += healAmount;
 			}
+		}
+
+		public void takeDamage(float damageAmount) {
+			if (this.health - damageAmount <= 0 && !isInvulnerable) {
+				playerDie();
+			} else if(!isInvulnerable) {
+				this.health -= damageAmount;
+				isInvulnerable = true;
+			}
+		}
+
+		public void playerDie() {
+			//gameover
 		}
 
         public void OnCollisionBegin(Component sender, CollisionEventArgs args)
         {
-            if(args.CollideWith.Name.Equals("FloorBlock"))
+            if(args.CollideWith.Name.Equals("TopBlock") || args.CollideWith.Name.Equals("TopHorizontalBlock"))
             {
                 canJump = true;
             }

@@ -10,7 +10,7 @@ using Duality.Resources;
 using OpenTK;
 using OpenTK.Input;
 
-namespace Space_Station_Escape
+namespace Duality_
 {
     [Serializable]
     public class Lever : Component, ICmpUpdatable, ICmpInitializable
